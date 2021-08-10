@@ -1,0 +1,39 @@
+->ssh sandbox
+->jps
+->ls
+->cd devpsh/labs/demos/
+->cp stocks.csv /tmp/
+->vi Stocks.sql
+
+
+'''
+use test;
+
+drop table if exists stocks;
+
+create table stocks (
+exchange varchar(8),
+stock_symbol varchar(8),
+date date,
+stock_price_open float,
+stock_price_high float,
+stock_price_low float,
+stock_price_close float,
+stock_volume int,
+stock_price_adj_close float);
+
+load data infile '/tmp/stocks.csv' into table stocks fields terminated by ',';
+
+alter table stocks add column `id` int(10) unsigned primary KEY AUTO_INCREMENT;
+'''
+
+
+->mysql test<stocks.sql
+->mysql
+->use test
+->show tables
+->select * from stocks limit 5;
+
+->sqoop import --connect jdbc:mysql://sandbox/test?user=root --table stocks
+->hdfs dfs -ls 
+->hdfs dfs -ls stocks
