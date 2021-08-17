@@ -28,7 +28,7 @@ alter table stocks add column `id` int(10) unsigned primary KEY AUTO_INCREMENT;
 '''
 
 
-->mysql test<stocks.sql
+->mysql test<stocks.sql                 //test database
 ->mysql
 ->use test
 ->show tables
